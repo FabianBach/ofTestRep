@@ -4,6 +4,7 @@ BackgroundSubst::BackgroundSubst()
 {
     absoluteSet = true;
     mode = '1';
+    limit = 100;
 }
 
 BackgroundSubst::~BackgroundSubst()
@@ -19,11 +20,12 @@ void BackgroundSubst::setAutoresize(bool setting = true){
 }
 
 void BackgroundSubst::setBackground(){
-    background = image;
+    setBackground(image);
 }
 
 void BackgroundSubst::setBackground(ofImage newBackground){
     background = newBackground;
+    printf("\nBackground set");
 }
 void BackgroundSubst::addToBackground(ofImage image){
     ofColor imageColor;
@@ -43,6 +45,7 @@ void BackgroundSubst::addToBackground(ofImage image){
             background.setColor(x, y, resultColor);
         }
     }
+    printf("\n\aMerged Backgrounds");
 
 }
 void BackgroundSubst::update(){
@@ -52,7 +55,21 @@ void BackgroundSubst::update(){
 }
 void BackgroundSubst::setMode(int modeSetting){
     mode = modeSetting;
-    printf("\n\aMode: %c", mode);
+    switch (modeSetting){
+        case'1':
+            printf("\n\aMode: %c, simple substract + abs + limit(%d)", mode, limit);
+            break;
+        case'2':
+            printf("\n\aMode: %c, simple substract + no negatives", mode);
+            break;
+        case'3':
+            printf("\n\aMode: %c, simple substract + possible negatives", mode);
+            break;
+        case'4':
+        default:
+            printf("\n\aMode: %c, simple substract + abs + no limit", mode);
+            break;
+    }
 }
 ofImage BackgroundSubst::substract(ofImage newImage){
 
@@ -61,7 +78,6 @@ ofImage BackgroundSubst::substract(ofImage newImage){
     ofColor imageColor;
     ofColor backgroundColor;
     ofColor resultColor;
-    unsigned int limit = 100;
 
 //    TODO:
 //      Scale Images to same size
@@ -90,6 +106,7 @@ ofImage BackgroundSubst::substract(ofImage newImage){
                 resultColor.r = imageColor.r - backgroundColor.r;
                 resultColor.g = imageColor.g - backgroundColor.g;
                 resultColor.b = imageColor.b - backgroundColor.b;
+
                 break;
 
                 case '4':

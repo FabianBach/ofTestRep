@@ -33,6 +33,7 @@ class BackgroundSubst
         bool absoluteSet;
         bool autoresizeSet;
         int mode;
+        unsigned int limit;
         ofImage background;
         ofImage image;
         ofImage result;

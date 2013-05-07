@@ -56,12 +56,6 @@ void testApp::keyPressed(int key)
     default:
         backsubsBlock.setMode(key);
     }
-
-//    if (key == 's' || key == 'S'){
-//		vidGrabber.videoSettings();
-//	}else if (key == ' ' || key == ' '){
-//		setNewBackground();
-//	}
 }
 
 //--------------------------------------------------------------
@@ -85,7 +79,7 @@ void testApp::mouseDragged(int x, int y, int button)
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button)
 {
-    printf("Just checkin...");
+
 }
 
 //--------------------------------------------------------------
